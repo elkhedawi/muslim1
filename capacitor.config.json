@@ -1,0 +1,37 @@
+{
+  "appId": "com.saifeltohamy.muslim",
+  "appName": "مُسْلِم",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "allowNavigation": [
+      "*.mp3quran.net",
+      "*.alquran.cloud",
+      "*.aladhan.com",
+      "*.radiojar.com",
+      "*.googleapis.com",
+      "fonts.gstatic.com",
+      "upload.wikimedia.org",
+      "cdn.tailwindcss.com",
+      "unpkg.com"
+    ]
+  },
+  "android": {
+    "allowMixedContent": true,
+    "backgroundColor": "#1A2A1A",
+    "webContentsDebuggingEnabled": true
+  },
+  "ios": {
+    "backgroundColor": "#1A2A1A",
+    "contentInset": "always",
+    "allowsLinkPreview": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#1A2A1A",
+      "androidSplashResourceName": "splash",
+      "showSpinner": false
+    }
+  }
+}

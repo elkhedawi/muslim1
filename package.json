@@ -1,0 +1,25 @@
+{
+  "name": "muslim-app",
+  "version": "1.0.0",
+  "description": "تطبيق مُسْلِم - القرآن الكريم والأذكار",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'No build step needed'",
+    "cap:sync": "npx cap sync",
+    "cap:android": "npx cap open android",
+    "cap:ios": "npx cap open ios"
+  },
+  "keywords": [
+    "quran",
+    "islam",
+    "muslim"
+  ],
+  "author": "Engineer Saif Eltohamy",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/android": "^8.3.1",
+    "@capacitor/cli": "^8.3.1",
+    "@capacitor/core": "^8.3.1",
+    "@capacitor/ios": "^8.3.1"
+  }
+}
