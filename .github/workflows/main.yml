@@ -24,9 +24,11 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
-    # 4. مزامنة ملفات أندرويد عبر Capacitor
-    - name: Sync Capacitor Android
-      run: npx cap sync android
+    # 4. إضافة ومزامنة منصة أندرويد
+    - name: Add and Sync Capacitor Android
+      run: |
+        npx cap add android || echo "Android platform already exists"
+        npx cap sync android
 
     # 5. تسطيب Java JDK 17
     - name: Setup Java
