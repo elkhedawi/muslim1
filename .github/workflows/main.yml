@@ -1,0 +1,52 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch: # الزرار السحري عشان تشغل البناء بإيدك في أي وقت
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. سحب كود المشروع
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 2. تسطيب Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    # 3. تحميل الحزم الخاصة بالمشروع
+    - name: Install Dependencies
+      run: npm install
+
+    # 4. مزامنة ملفات أندرويد عبر Capacitor
+    - name: Sync Capacitor Android
+      run: npx cap sync android
+
+    # 5. تسطيب Java JDK 17
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'zulu'
+        java-version: '17'
+
+    # 6. إعطاء صلاحية التشغيل لأداة Gradle
+    - name: Grant execute permission for gradlew
+      run: chmod +x android/gradlew
+
+    # 7. بناء الـ APK
+    - name: Build APK (Debug)
+      working-directory: ./android
+      run: ./gradlew assembleDebug
+
+    # 8. رفع الـ APK عشان تقدر تحمله
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: muslim-app-apk
+        path: android/app/build/outputs/apk/debug/app-debug.apk
